@@ -1,20 +1,22 @@
 import React from 'react'
 import './Homepage.css'
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 import { useQuery } from "@apollo/react-hooks";
 import {GET_SOPPING_LISTS}  from '../../graphql/queries'
 
 export default function Homepage() {
+
+
+
+
   const { loading, error, data } = useQuery(GET_SOPPING_LISTS);
-  console.log(data)
+  console.log('data',data)
 
   if (loading) return "Loading...";
   if (error)
     return (
       error.message
     );
-
-
 
   return (
     <div>
