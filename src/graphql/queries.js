@@ -1,12 +1,10 @@
 import gql from "graphql-tag";
 
-
 export const GET_MESSAGE = gql`
   query {
     message
   }
-`
-
+`;
 
 export const GET_PRODUCTS = gql`
   query {
@@ -15,7 +13,7 @@ export const GET_PRODUCTS = gql`
       name
     }
   }
-`
+`;
 
 export const GET_SOPPING_LISTS = gql`
   query {
@@ -24,4 +22,13 @@ export const GET_SOPPING_LISTS = gql`
       title
     }
   }
-`
+`;
+
+export const GET_USER = gql`
+  query {
+    users {
+      id
+      email
+    }
+  }
+`;
