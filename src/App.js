@@ -14,22 +14,12 @@ import Homepage from "./pages/Homepage/Homepage";
 import Loginpage from "./pages/Loginpage/Loginpage";
 import { Switch, Route } from "react-router-dom";
 import { ApolloLink } from "@apollo/client";
+import Navigation from "./components/Navigation";
+import Editlist from "./components/Editlist/Editlist";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
 });
-
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = localStorage.getItem("token");
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : "",
-//     },
-//   };
-// });
 
 const authLink = new ApolloLink((operation, forward) => {
   console.log(213123123);
@@ -57,9 +47,11 @@ console.log(client);
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Navigation />
       <Switch>
-        <Route exact path="/" component={Loginpage} />
+        <Route exact path="/login" component={Loginpage} />
         <Route path="/homepage" component={Homepage} />
+        <Route path="/editPage" component={Editlist} />
       </Switch>
     </ApolloProvider>
   );
