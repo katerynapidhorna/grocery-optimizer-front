@@ -9,7 +9,8 @@ export default function Loginpage() {
  
 
   return (
-    <div>
+    <div className='form-container'>
+      <h2>Login</h2>
       <form>
         <input type='text' 
                placeholder='email' 
@@ -27,6 +28,7 @@ export default function Loginpage() {
                  console.log(password)
                }}
         />
+      <input type='submit' />
       </form>
     </div>
   )

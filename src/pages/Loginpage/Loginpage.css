@@ -1,0 +1,19 @@
+.form-container {
+  margin-top: 10%;
+  margin: 10% 30% ;
+  flex-direction: column;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+form input {
+  margin: 1em;
+  padding: 1em;
+  box-shadow: 0 0 1px;
+  border-radius: 3px;
+}

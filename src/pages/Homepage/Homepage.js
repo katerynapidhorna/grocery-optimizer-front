@@ -13,8 +13,9 @@ export default function Homepage() {
   if (error) return error.message;
 
   return (
-    <div>
-      <h1>All shopping lists here</h1>
+    <div className='list-container'>
+      <div className='shoppinglist-box'><Link to='#'>list title</Link></div>
+      <div className='shoppinglist-box'><Link to='/editPage'>Create new list</Link></div>
     </div>
   );
 }

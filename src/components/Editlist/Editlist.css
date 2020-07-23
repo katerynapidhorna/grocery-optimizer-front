@@ -1,0 +1,35 @@
+.edit-container {
+  margin-top: 10%;
+  margin: 10% 30% ;
+  flex-direction: column;
+  box-shadow: 0 0 1px gray;
+  padding-bottom: 40px;
+}
+
+.input-container {
+  display: flex;
+  position: relative;
+}
+
+.title-input {
+  padding: 0.5em;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+.amount-input {
+  width: 30px;
+}
+
+.remove-item {
+  height: fit-content;
+  margin: auto;
+  font-size: 18px;
+}
+
+.add-item {
+  position: absolute;
+  top: 0px;
+  left: 13px;
+}
