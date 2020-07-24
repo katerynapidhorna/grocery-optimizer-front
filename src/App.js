@@ -8,7 +8,6 @@ import {
   from,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-// import ApolloClient, { from } from "apollo-boost";
 import "./App.css";
 import Homepage from "./pages/Homepage/Homepage";
 import Loginpage from "./pages/Loginpage/Loginpage";
