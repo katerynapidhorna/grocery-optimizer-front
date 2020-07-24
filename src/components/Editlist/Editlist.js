@@ -1,8 +1,13 @@
-import React,{useState} from 'react'
-import './Editlist.css'
+import React,{useState} from 'react';
+import { useQuery } from "@apollo/react-hooks";
+
+import './Editlist.css';
+import {  GET_USER } from "../../graphql/queries";
+
 
 export default function Editlist() {
   const[productAmount,set_productAmount] = useState([{}])
+  const { loading, error, data } = useQuery(GET_USER);
 
   function removeOne(index) {
     return productAmount.filter((p,i)=>{
@@ -11,6 +16,8 @@ export default function Editlist() {
       }
     })
   }
+
+console.log(data)
 
   return (
     <div className='edit-container'>
