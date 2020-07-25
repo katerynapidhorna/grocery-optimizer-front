@@ -1,35 +1,47 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import './Loginpage.css'
 
 export default function Loginpage() {
-  const[email,set_email] = useState('');
-  const[password,set_password] = useState('')
+  const[userEmail,set_userEmail] = useState('');
+  const[userPassword,set_userPassword] = useState('')
 
 
- 
+ async function postUserData(email,password) {
+   const response  = await axios.post('http://localhost:4000/login', {
+     email,
+     password
+   })
+   console.log(response.data)
+   localStorage.setItem('jwt',response.data.token)
+ }
+
+  
+
 
   return (
     <div className='form-container'>
       <h2>Login</h2>
       <form>
-        <input type='text' 
+        <input type='email' 
                placeholder='email' 
-               value={email}
+               value={userEmail}
                onChange={(e)=>{
-                 set_email(e.target.value)
-                 console.log(email)
+                 set_userEmail(e.target.value)
                }}
         />
-        <input type='text' 
+        <input type='password' 
                placeholder='password' 
-               value={password}
+               value={userPassword}
                onChange={(e)=>{
-                 set_password(e.target.value)
-                 console.log(password)
+                set_userPassword(e.target.value)
                }}
         />
-      <input type='submit' />
+      <input type='submit' onClick={(e)=>{
+        e.preventDefault()
+        postUserData(userEmail,userPassword)
+      }}/>
       </form>
       <Link to='/signup'>create new accaunt</Link>
     </div>

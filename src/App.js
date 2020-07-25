@@ -26,7 +26,7 @@ const authLink = new ApolloLink((operation, forward) => {
   console.log(213123123);
   operation.setContext(({ headers }) => ({
     headers: {
-      authorization: "ppp",
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
       ...headers,
     },
   }));
