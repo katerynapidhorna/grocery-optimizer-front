@@ -50,7 +50,7 @@ function App() {
       <Switch>
         <Route exact path="/login" component={Loginpage} />
         <Route path="/homepage" component={Homepage} />
-        <Route path="/editPage" component={Editlist} />
+        <Route path="/editPage/:id" component={Editlist} />
       </Switch>
     </ApolloProvider>
   );
