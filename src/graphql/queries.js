@@ -33,7 +33,15 @@ export const GET_USER = gql`
           id
           userId
           title
+          products {
+            id
+            name
+            unit
+            amount
+            purchased
+          }
         }
+
       }
        
 `;
