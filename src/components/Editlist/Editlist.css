@@ -2,7 +2,8 @@
   margin-top: 10%;
   margin: 10% 30% ;
   flex-direction: column;
-  box-shadow: 0 0 1px gray;
+  box-shadow: 0 0 3px gray;
+  border-radius: 3px;
   padding-bottom: 40px;
 }
 
@@ -33,3 +34,5 @@
   top: 0px;
   left: 13px;
 }
+
+@media only screen and (max-width: 600px) {}

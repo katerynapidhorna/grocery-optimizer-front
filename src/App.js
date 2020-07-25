@@ -15,6 +15,8 @@ import { Switch, Route } from "react-router-dom";
 import { ApolloLink } from "@apollo/client";
 import Navigation from "./components/Navigation";
 import Editlist from "./components/Editlist/Editlist";
+import ShoppingList from './components/ShoppingList/ShoppingList'
+import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
@@ -48,9 +50,11 @@ function App() {
     <ApolloProvider client={client}>
       <Navigation />
       <Switch>
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Loginpage} />
         <Route path="/homepage" component={Homepage} />
         <Route path="/editPage/:id" component={Editlist} />
+        <Route path="/shoppingList" component={ShoppingList} />
       </Switch>
     </ApolloProvider>
   );

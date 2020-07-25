@@ -1,0 +1,25 @@
+.list-container {
+  margin-top: 10%;
+  margin: 10% 30% ;
+  flex-direction: column;
+  box-shadow: 0 0 3px gray;
+  border-radius: 3px;
+  padding-bottom: 40px;
+}
+
+.list {
+  padding: 1em
+}
+
+.list ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0 0 0px;
+  text-align: left;
+  border-bottom: 1px solid;
+}

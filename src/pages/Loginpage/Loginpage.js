@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from "react-router-dom";
 import './Loginpage.css'
 
 export default function Loginpage() {
@@ -30,6 +31,7 @@ export default function Loginpage() {
         />
       <input type='submit' />
       </form>
+      <Link to='/signup'>create new accaunt</Link>
     </div>
   )
 }

@@ -18,6 +18,12 @@ code {
     monospace;
 }
 
+.form-container {
+  margin-top: 10%;
+  margin: 10% 30% ;
+  flex-direction: column;
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -29,6 +35,46 @@ code {
   right: 0;
   left: 0;
   z-index: 251;
+}
+
+.logo {
+font-size: 2em;
+}
+
+.manu {
+  position: relative;
+}
+
+.nav-manu {
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 0 0 3px;
+  padding: 0;
+  list-style-type: none;
+  background-color: #fff;
+  top: 8px;
+  right: 28px;
+
+
+  transition: all 0.3s ease;
+  transform: perspective(400px) rotateX(-90deg);
+  transform-origin: top;
+  opacity: 0;
+}
+
+.manu:hover .nav-manu {
+  transform: perspective(400px) rotateX(0);
+  opacity: 1;
+}
+
+.nav-manu li {
+  padding-bottom: 10px;
+  padding: 22px 50px 22px 50px;
+  border: 1px solid;
+}
+
+.nav-manu li:hover {
+  background-color: #e2f0f1;
 }
 
 .manu div {
