@@ -11,7 +11,11 @@ export default function Navigation() {
       <div></div>
       <ul className='nav-manu'>
         <li><Link to='/homepage'>Home</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {localStorage.getItem('jwt') && <li><Link to='/login' onClick={
+          ()=>{
+            localStorage.removeItem('jwt')
+          }
+        }>Logout</Link></li> || !localStorage.getItem('jwt') &&<li><Link to='/login'>Login</Link></li>}
       </ul>
     </div>
     </div>
