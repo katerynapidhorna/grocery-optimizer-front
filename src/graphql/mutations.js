@@ -8,6 +8,13 @@ mutation AddShoppinList($title: String!, $userId: Int!){
      userId
    }
   }
+`
 
-
+export const CREATE_NEW_USER = gql`
+mutation CreateNewUser($email: String!, $password: String!){
+  createNewUser(email: $email, password: $password) {
+		email
+    password
+  }
+}
 `
