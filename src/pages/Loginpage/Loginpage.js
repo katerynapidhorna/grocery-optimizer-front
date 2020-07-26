@@ -13,7 +13,6 @@ export default function Loginpage() {
      email,
      password
    })
-   console.log(response.data)
    localStorage.setItem('jwt',response.data.token)
  }
 
@@ -23,7 +22,7 @@ export default function Loginpage() {
   return (
     <div className='form-container'>
       <h2>Login</h2>
-      <form>
+      <form action='/homepage'>
         <input type='email' 
                placeholder='email' 
                value={userEmail}
@@ -39,7 +38,6 @@ export default function Loginpage() {
                }}
         />
       <input type='submit' onClick={(e)=>{
-        e.preventDefault()
         postUserData(userEmail,userPassword)
       }}/>
       </form>
