@@ -17,7 +17,7 @@ export default function Homepage() {
   return (
     <div className='list-container'>
       {data && data.shoppingLists.map((list)=>{
-        return <div key={list.id} className='shoppinglist-box'><Link to={`/editPage/${list.id}`}>{list.title}</Link></div>
+        return <div key={list.id} className='shoppinglist-box'><Link to={`/shoppingList/${list.id}`}>{list.title}</Link></div>
       })}
       <div className='shoppinglist-box'><Link to='/editPage' onClick={()=>{
         addShoppingList({variables:{title:"My new List", userId:17}})

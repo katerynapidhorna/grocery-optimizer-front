@@ -53,7 +53,7 @@ function App() {
         <Route exact path="/login" component={Loginpage} />
         <Route path="/homepage" component={Homepage} />
         <Route path="/editPage/:id" component={Editlist} />
-        <Route path="/shoppingList" component={ShoppingList} />
+        <Route path="/shoppingList/:id" component={ShoppingList} />
       </Switch>
     </ApolloProvider>
   );
