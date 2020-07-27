@@ -26,6 +26,11 @@ export default function Editlist() {
         title: result.title,
         products: cloneObj(result.products),
       });
+    } else {
+      set_productsList({
+        title:'New List',
+        products:[]
+      })
     }
   }, [data]);
 
@@ -122,6 +127,7 @@ export default function Editlist() {
             </button>
           )}
         </div>
+        <button>update</button>
       </form>
     </div>
   );
