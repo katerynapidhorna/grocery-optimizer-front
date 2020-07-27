@@ -4,12 +4,15 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import "./Editlist.css";
 import { GET_USER } from "../../graphql/queries";
+import { UPDATE_SHOPPING_LIST } from "../../graphql/mutations";
 import { cloneObj } from "../../utils";
 
 export default function Editlist() {
   const listId = parseInt(useParams().id);
   const [productsList, set_productsList] = useState(null);
-  const [newProducts, set_newProducts] = useState(null);
+  const [updateShoppingList, { list, products }] = useMutation(
+    UPDATE_SHOPPING_LIST
+  );
   const { loading, error, data } = useQuery(GET_USER);
 
   // const [updateList, { a, p }] = useMutation(`
@@ -28,9 +31,9 @@ export default function Editlist() {
       });
     } else {
       set_productsList({
-        title:'New List',
-        products:[]
-      })
+        title: "New List",
+        products: [],
+      });
     }
   }, [data]);
 
@@ -44,7 +47,7 @@ export default function Editlist() {
       }
     });
   }
-
+  console.log("productsList", productsList);
   return (
     <div className="edit-container">
       <form>
@@ -127,7 +130,29 @@ export default function Editlist() {
             </button>
           )}
         </div>
-        <button>update</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+
+            console.log("productsList", productsList);
+
+            updateShoppingList({
+              variables: {
+                title: productsList.title,
+                id: listId,
+                products: productsList.products.map((p) => {
+                  return {
+                    name: p.name,
+                    amount: p.amount,
+                    id: p.id || null,
+                  };
+                }),
+              },
+            });
+          }}
+        >
+          update
+        </button>
       </form>
     </div>
   );
