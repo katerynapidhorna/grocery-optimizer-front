@@ -26,22 +26,20 @@ export const GET_SOPPING_LISTS = gql`
 
 export const GET_USER = gql`
   query {
-      users(id:17) {
+    user {
+      id
+    }
+    shoppingLists {
+      id
+      userId
+      title
+      products {
         id
+        name
+        unit
+        amount
+        purchased
       }
-        shoppingLists {
-          id
-          userId
-          title
-          products {
-            id
-            name
-            unit
-            amount
-            purchased
-          }
-        }
-
-      }
-       
+    }
+  }
 `;

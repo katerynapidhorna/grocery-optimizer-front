@@ -13,7 +13,6 @@ export default function Homepage() {
   if (loading) return "Loading...";
   if (error) return error.message;
 
-  console.log(data.shoppingLists)
 
   return (
     <div className='list-container'>

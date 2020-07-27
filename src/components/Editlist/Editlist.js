@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import "./Editlist.css";
 import { GET_USER } from "../../graphql/queries";
@@ -11,6 +11,10 @@ export default function Editlist() {
   const [productsList, set_productsList] = useState(null);
   const [newProducts, set_newProducts] = useState(null);
   const { loading, error, data } = useQuery(GET_USER);
+
+  // const [updateList, { a, p }] = useMutation(`
+
+  // `);
 
   useEffect(() => {
     if (data) {
@@ -72,7 +76,7 @@ export default function Editlist() {
                   className="amount-input"
                   type="number"
                   placeholder="quontity"
-                  min='0'
+                  min="0"
                   value={product.amount}
                   onChange={(e) => {
                     const newArray = productsList.products.map((p, index) => {
@@ -109,7 +113,7 @@ export default function Editlist() {
                   ...productsList,
                   products: [
                     ...productsList.products,
-                    { name: "new product", amount: 1,unit:null},
+                    { name: "new product", amount: 1, unit: null },
                   ],
                 });
               }}

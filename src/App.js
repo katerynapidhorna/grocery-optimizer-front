@@ -15,7 +15,7 @@ import { Switch, Route } from "react-router-dom";
 import { ApolloLink } from "@apollo/client";
 import Navigation from "./components/Navigation";
 import Editlist from "./components/Editlist/Editlist";
-import ShoppingList from './components/ShoppingList/ShoppingList'
+import ShoppingList from "./components/ShoppingList/ShoppingList";
 import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
@@ -23,10 +23,9 @@ const httpLink = createHttpLink({
 });
 
 const authLink = new ApolloLink((operation, forward) => {
-  console.log(213123123);
   operation.setContext(({ headers }) => ({
     headers: {
-      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
       ...headers,
     },
   }));
