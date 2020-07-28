@@ -10,7 +10,7 @@ export const GET_SHOPPING_LISTS = gql`
 `;
 
 export const GET_SHOPPING_LIST = gql`
-  query Ppp($id: Int!) {
+  query ShoppingList($id: Int!) {
     shoppingList(id: $id) {
       id
       title
