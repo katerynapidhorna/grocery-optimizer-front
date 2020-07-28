@@ -1,10 +1,9 @@
 import gql from "graphql-tag";
 
 export const ADD_SHOPPING_LIST = gql`
-  mutation AddShoppinList($title: String!, $userId: Int!) {
-    addShoppinList(title: $title, userId: $userId) {
-      title
-      userId
+  mutation AddShoppinList($title: String!) {
+    addShoppinList(title: $title) {
+      id
     }
   }
 `;
@@ -24,10 +23,7 @@ export const UPDATE_SHOPPING_LIST = gql`
     $id: Int!
     $products: [ShoppingListUpdateItem]!
   ) {
-    updateShoppingList(
-      list: { title: $title, id: $id }
-      products: $products
-    ) {
+    updateShoppingList(list: { title: $title, id: $id }, products: $products) {
       products {
         name
       }

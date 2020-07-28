@@ -18,24 +18,25 @@ export default function Editlist() {
   // const [updateList, { a, p }] = useMutation(`
 
   // `);
+  console.log("data", data);
 
-  useEffect(() => {
-    if (data) {
-      const result = data.shoppingLists.find((list) => {
-        return list.id === listId;
-      });
-      // have to clone, otherwise can't mutate object properties later
-      set_productsList({
-        title: result.title,
-        products: cloneObj(result.products),
-      });
-    } else {
-      set_productsList({
-        title: "New List",
-        products: [],
-      });
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     const result = data.shoppingLists.find((list) => {
+  //       return list.id === listId;
+  //     });
+  //     // have to clone, otherwise can't mutate object properties later
+  //     set_productsList({
+  //       title: result.title,
+  //       products: cloneObj(result.products),
+  //     });
+  //   } else {
+  //     set_productsList({
+  //       title: "New List",
+  //       products: [],
+  //     });
+  //   }
+  // }, [data]);
 
   if (loading) return "Loading...";
   if (error) return error.message;
