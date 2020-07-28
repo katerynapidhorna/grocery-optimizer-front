@@ -45,7 +45,12 @@ export default function ShoppingList() {
       <button>
         <Link to={`/enterPrices/${listId}`}>enter prices</Link>
       </button>
-      <button>compare stores</button>
+      <button>
+      <Link to={`/comparePrices/${listId}`}>compare stores</Link>
+      </button>
+      <button>
+      <Link to={`/homepage`}>Home</Link>
+      </button>
     </div>
   );
 }

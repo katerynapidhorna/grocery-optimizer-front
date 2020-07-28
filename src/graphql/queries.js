@@ -63,3 +63,23 @@ export const PRICE_INPUT = gql`
     }
   }
 `;
+
+export const PRICE_COMPARISON = gql`
+  query PriceInput($id: Int!) {
+    stores {
+      id
+      name
+    }
+    shoppingList(id: $id) {
+      products {
+        id
+        name
+        amount
+        prices {
+          storeId
+          price
+        }
+      }
+    }
+  }
+`;

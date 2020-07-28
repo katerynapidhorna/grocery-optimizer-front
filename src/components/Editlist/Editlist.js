@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import "./Editlist.css";
@@ -21,7 +21,7 @@ export default function Editlist() {
 
   useEffect(() => {
     if (data) {
-      set_productsList(data.shoppingList);
+      set_productsList(cloneObj(data.shoppingList));
     }
   }, [data]);
 
@@ -118,30 +118,33 @@ export default function Editlist() {
             </button>
           )}
         </div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-
-            console.log("productsList", productsList);
-
-            updateShoppingList({
-              variables: {
-                title: productsList.title,
-                id: listId,
-                products: productsList.products.map((p) => {
-                  return {
-                    name: p.name,
-                    amount: p.amount,
-                    id: p.id || null,
-                  };
-                }),
-              },
-            });
-          }}
-        >
-          update
-        </button>
       </form>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          updateShoppingList({
+            variables: {
+              title: productsList.title,
+              id: listId,
+              products: productsList.products.map((p) => {
+                return {
+                  name: p.name,
+                  amount: p.amount,
+                  id: p.id || null,
+                };
+              }),
+            },
+          });
+        }}
+      >
+        update
+      </button>
+      <button>
+        <Link to={`/shoppingList/${listId}`}>Back to list</Link>
+      </button>
+      <button>
+        <Link to={`/comparePrices/${listId}`}>Compare prices</Link>
+      </button>
     </div>
   );
 }
