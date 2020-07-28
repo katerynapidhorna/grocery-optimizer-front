@@ -17,6 +17,7 @@ import Navigation from "./components/Navigation";
 import Editlist from "./components/Editlist/Editlist";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
 import EnterPrices from "./components/EnterPrices"
+import ComparePrices from "./components/ComparePrices"
 import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
@@ -56,6 +57,7 @@ function App() {
         <Route path="/editPage/:id" component={Editlist} />
         <Route path="/shoppingList/:id" component={ShoppingList} />
         <Route path="/enterPrices/:id" component={EnterPrices} />
+        <Route path="/comparePrices/:id" component={ComparePrices} />
       </Switch>
     </ApolloProvider>
   );

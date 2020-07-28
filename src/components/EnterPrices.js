@@ -50,8 +50,13 @@ export default function EnterPrices() {
     }
   }, [data]);
 
-  if (loading) return "Loading...";
-  if (error) return error.message;
+  if (loading) {
+    return "Loading...";
+  }
+
+  if (error) {
+    return error.message;
+  }
 
   return (
     <div>
