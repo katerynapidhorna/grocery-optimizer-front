@@ -43,3 +43,23 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const PRICE_INPUT = gql`
+  query PriceInput($id: Int!) {
+    stores {
+      id
+      name
+    }
+    shoppingList(id: $id) {
+      title
+      products {
+        id
+        name
+        prices {
+          storeId
+          price
+        }
+      }
+    }
+  }
+`;

@@ -16,6 +16,7 @@ import { ApolloLink } from "@apollo/client";
 import Navigation from "./components/Navigation";
 import Editlist from "./components/Editlist/Editlist";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
+import EnterPrices from "./components/EnterPrices"
 import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
@@ -54,6 +55,7 @@ function App() {
         <Route path="/homepage" component={Homepage} />
         <Route path="/editPage/:id" component={Editlist} />
         <Route path="/shoppingList/:id" component={ShoppingList} />
+        <Route path="/enterPrices/:id" component={EnterPrices} />
       </Switch>
     </ApolloProvider>
   );

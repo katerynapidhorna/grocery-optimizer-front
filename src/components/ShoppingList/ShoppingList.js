@@ -42,7 +42,9 @@ export default function ShoppingList() {
         <Link to={`/editPage/${listId}`}>edit list</Link>
       </button>
       <button>reset checkboxs</button>
-      <button>enter prices</button>
+      <button>
+        <Link to={`/enterPrices/${listId}`}>enter prices</Link>
+      </button>
       <button>compare stores</button>
     </div>
   );

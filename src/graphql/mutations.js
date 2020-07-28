@@ -30,3 +30,11 @@ export const UPDATE_SHOPPING_LIST = gql`
     }
   }
 `;
+
+export const UPDATE_PRICES = gql`
+  mutation UpdatePrices($prices: [NewProductPrices]!) {
+    updatePrices(prices: $prices) {
+      success
+    }
+  }
+`;
