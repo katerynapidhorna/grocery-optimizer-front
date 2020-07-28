@@ -1,25 +1,25 @@
 import gql from "graphql-tag";
 
-export const GET_MESSAGE = gql`
-  query {
-    message
-  }
-`;
-
-export const GET_PRODUCTS = gql`
-  query {
-    products {
-      id
-      name
-    }
-  }
-`;
-
-export const GET_SOPPING_LISTS = gql`
+export const GET_SHOPPING_LISTS = gql`
   query {
     shoppingLists {
       id
       title
+    }
+  }
+`;
+
+export const GET_SHOPPING_LIST = gql`
+  query Ppp($id: Int!) {
+    shoppingList(id: $id) {
+      id
+      title
+      products {
+        id
+        name
+        unit
+        purchased
+      }
     }
   }
 `;

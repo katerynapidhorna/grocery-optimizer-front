@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import "./Editlist.css";
-import { GET_USER } from "../../graphql/queries";
+import { GET_SHOPPING_LIST } from "../../graphql/queries";
 import { UPDATE_SHOPPING_LIST } from "../../graphql/mutations";
 import { cloneObj } from "../../utils";
 
@@ -13,30 +13,17 @@ export default function Editlist() {
   const [updateShoppingList, { list, products }] = useMutation(
     UPDATE_SHOPPING_LIST
   );
-  const { loading, error, data } = useQuery(GET_USER);
+  const { loading, error, data } = useQuery(GET_SHOPPING_LIST, {
+    variables: {
+      id: listId,
+    },
+  });
 
-  // const [updateList, { a, p }] = useMutation(`
-
-  // `);
-  console.log("data", data);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     const result = data.shoppingLists.find((list) => {
-  //       return list.id === listId;
-  //     });
-  //     // have to clone, otherwise can't mutate object properties later
-  //     set_productsList({
-  //       title: result.title,
-  //       products: cloneObj(result.products),
-  //     });
-  //   } else {
-  //     set_productsList({
-  //       title: "New List",
-  //       products: [],
-  //     });
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      set_productsList(data.shoppingList);
+    }
+  }, [data]);
 
   if (loading) return "Loading...";
   if (error) return error.message;
