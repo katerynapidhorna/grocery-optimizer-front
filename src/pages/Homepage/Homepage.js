@@ -14,7 +14,8 @@ export default function Homepage() {
   if (error) return error.message;
 
   return (
-    <div className="list-container">
+    <div className="shoppinglists-container">
+      <h2>Your personal shopping lists</h2>
       {data &&
         data.shoppingLists.map((list) => {
           return (
@@ -24,7 +25,7 @@ export default function Homepage() {
           );
         })}
       <div className="shoppinglist-box">
-        <button
+        <Link to='#'
           onClick={async (e) => {
             e.preventDefault();
             const res = await addShoppingList({
@@ -34,7 +35,7 @@ export default function Homepage() {
           }}
         >
           Create new list
-        </button>
+        </Link>
       </div>
     </div>
   );

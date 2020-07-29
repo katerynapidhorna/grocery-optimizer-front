@@ -111,7 +111,7 @@ export default function ComparePrices() {
   return (
     <div>
       <h2>Compare prices here</h2>
-      <Link to={`/editPage/${listId}`}>edit list</Link>
+      <Link className="basic-button" to={`/editPage/${listId}`}>edit list</Link>
       <button>+</button>
       <table>
         <thead>

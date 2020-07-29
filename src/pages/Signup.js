@@ -15,13 +15,13 @@ export default function Signup() {
       password
     })
     localStorage.setItem("jwt", response.data.token);
-    history.push("/homepage");
+    history.replace("/");
   }
 
   return (
     <div className='form-container'>
     <h2>Create new accaunt</h2>
-    <form action='/homepage' onSubmit={(e)=>{
+    <form action='/' onSubmit={(e)=>{
       e.preventDefault()
       createNewUser(newEmail,newPassword)
     }}>

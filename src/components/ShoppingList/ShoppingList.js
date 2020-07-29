@@ -26,6 +26,7 @@ export default function ShoppingList() {
     <div className="list-container">
       <div className="list">
         <h2>{productsList && productsList.title}</h2>
+        <button className='reset-button '>reset checkboxs</button> 
         <ul>
           {productsList &&
             productsList.products.map((p, i) => {
@@ -38,19 +39,13 @@ export default function ShoppingList() {
             })}
         </ul>
       </div>
-      <button>
-        <Link to={`/editPage/${listId}`}>edit list</Link>
-      </button>
-      <button>reset checkboxs</button>
-      <button>
-        <Link to={`/enterPrices/${listId}`}>enter prices</Link>
-      </button>
-      <button>
-      <Link to={`/comparePrices/${listId}`}>compare stores</Link>
-      </button>
-      <button>
-      <Link to={`/homepage`}>Home</Link>
-      </button>
+      
+      <div className='buttons-conteiner'>
+      <Link className='basic-button'  to={`/editPage/${listId}`}>edit list</Link> 
+      <Link className='basic-button' to={`/enterPrices/${listId}`}>enter prices</Link>
+      <Link className='basic-button' to={`/comparePrices/${listId}`}>compare stores</Link>
+      <Link className='basic-button' to={`/`}>Home</Link>
+      </div>
     </div>
   );
 }

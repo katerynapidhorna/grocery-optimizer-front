@@ -1,10 +1,12 @@
 .list-container {
-  margin-top: 10%;
-  margin: 10% 30% ;
+  margin:auto ;
+  width: 50%;
+  margin-top: 30px;
   flex-direction: column;
   box-shadow: 0 0 3px gray;
   border-radius: 3px;
   padding-bottom: 40px;
+  background-color: #e2f0f1;
 }
 
 .list {
@@ -22,4 +24,39 @@
   padding: 1em 0 0 0px;
   text-align: left;
   border-bottom: 1px solid;
+}
+
+.buttons-conteiner {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.reset-button {
+  width: fit-content;
+  background-color: #da6e6e;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5em;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.basic-button {
+  font-size: 14px;
+}
+
+
+@media only screen and (max-width: 600px) { /* I've given 1023px but you can change to proper width */
+  .list-container  {
+    margin-top: 10px;
+  }
+
+  .buttons-conteiner {
+    flex-direction: column;
+  }
+
+  .basic-button {
+    margin: auto;
+    margin-bottom: 10px !important;
+  }
 }
