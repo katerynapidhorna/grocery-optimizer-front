@@ -17,6 +17,11 @@ body {
   height: 100%;
 }
 
+h2 {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -42,6 +47,17 @@ code {
   left: 0;
   z-index: 251;
 }
+
+.list-container {
+  background-color: #e2f0f1;
+  margin-bottom: 10% !important;
+}
+
+.buttons-conteiner {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 
 .logo {
 font-size: 2em;
@@ -99,6 +115,45 @@ font-size: 2em;
   padding: 0.5em;
   text-decoration: none;
   text-transform: uppercase;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+
+.edit-button {
+  background-image: url('./img/edit.png');
+  background-repeat: no-repeat;
+  background-position: 7px 5px;
+  background-color: #d4a61cb8;
+}
+
+.compare-button {
+  background-image: url('./img/coin-pig.png');
+  background-repeat: no-repeat;
+  background-position: 3px 3px;
+  background-color: #80bbcf;
+  background-size: 42px;
+}
+
+.prices-button {
+  background-image: url('./img/coin.png');
+  background-repeat: no-repeat;
+  background-position: 8px 8px;
+  background-color: #ba47c185;
+}
+
+.list-button {
+  background-image: url('./img/list.png');
+  background-repeat: no-repeat;
+  background-position: 8px 8px;
+  background-color: #ec4c61;
+  background-size: 32px;
+}
+
+.home-button {
+  background-image: url('./img/home.png');
+  background-repeat: no-repeat;
+  background-size: 49px;
 }
 
 .basic-button:hover {

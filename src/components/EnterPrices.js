@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { PRICE_INPUT } from "../graphql/queries";
 import { UPDATE_PRICES } from "../graphql/mutations";
+import "./EnterPrices.css";
 
 export default function EnterPrices() {
   const listId = parseInt(useParams().id);
@@ -28,6 +29,7 @@ export default function EnterPrices() {
         });
         let knownStorePrice = "";
         if (storePrice) {
+          console.log("storePrice", storePrice);
           knownStorePrice = storePrice.price.toString();
         }
         return {
@@ -59,32 +61,35 @@ export default function EnterPrices() {
   }
 
   return (
-    <div>
+    <div className="list-container">
       <h1>Enter prices here</h1>
 
       <div>
-        {productsForm.map((p, index) => {
-          return (
-            <div key={p.id}>
-              <span>{p.name}</span>
-              <input
-                type="number"
-                value={p.newPrice}
-                onChange={(e) => {
-                  set_productsForm(
-                    productsForm.map((p, i) => {
-                      if (i === index) {
-                        return { ...p, newPrice: e.target.value };
-                      } else {
-                        return p;
-                      }
-                    })
-                  );
-                }}
-              />
-            </div>
-          );
-        })}
+        <form>
+          {productsForm.map((p, index) => {
+            return (
+              <div className='input-box' key={p.id}>
+                <span>{p.name}</span>
+                <input
+                  className='input-price'
+                  type="number"
+                  value={p.newPrice}
+                  onChange={(e) => {
+                    set_productsForm(
+                      productsForm.map((p, i) => {
+                        if (i === index) {
+                          return { ...p, newPrice: e.target.value };
+                        } else {
+                          return p;
+                        }
+                      })
+                    );
+                  }}
+                />
+              </div>
+            );
+          })}
+        </form>
       </div>
       <button
         onClick={async (e) => {
@@ -121,6 +126,11 @@ export default function EnterPrices() {
           );
         })}
       </select>
+      <div className="buttons-conteiner">
+        <Link className="basic-button edit-button" title='edit list' to={`/editPage/${listId}`} />
+        <Link className="basic-button compare-button" title='compare prices' to={`/comparePrices/${listId}`} />
+        <Link className="basic-button home-button" title='home' to={`/`} />
+      </div>
     </div>
   );
 }

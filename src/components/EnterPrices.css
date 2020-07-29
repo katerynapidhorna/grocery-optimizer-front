@@ -1,0 +1,23 @@
+.input-box {
+  width: fit-content;
+  margin: auto;
+} 
+
+.input-box {
+  display: flex;  
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+
+span {
+  padding-bottom: 10px;
+}
+
+  
+  .input-price {
+    padding: 10px;
+  }
+
+@media only screen and (max-width: 611px) {
+
+}

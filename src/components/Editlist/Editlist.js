@@ -13,7 +13,7 @@ export default function Editlist() {
   const [updateShoppingList, { list, products }] = useMutation(
     UPDATE_SHOPPING_LIST
   );
-  const { loading, error, data } = useQuery(GET_SHOPPING_LIST, {
+  const { loading, error, data, refetch } = useQuery(GET_SHOPPING_LIST, {
     variables: {
       id: listId,
     },
@@ -35,9 +35,8 @@ export default function Editlist() {
       }
     });
   }
-  console.log("productsList", productsList);
   return (
-    <div className="edit-container">
+    <div className="list-container">
       <form>
         {productsList && (
           <input
@@ -120,9 +119,9 @@ export default function Editlist() {
         </div>
       </form>
       <button
-        onClick={(e) => {
+        onClick={async (e) => {
           e.preventDefault();
-          updateShoppingList({
+          await updateShoppingList({
             variables: {
               title: productsList.title,
               id: listId,
@@ -135,16 +134,16 @@ export default function Editlist() {
               }),
             },
           });
+          refetch();
         }}
       >
         update
       </button>
-      <button>
-        <Link to={`/shoppingList/${listId}`}>Back to list</Link>
-      </button>
-      <button>
-        <Link to={`/comparePrices/${listId}`}>Compare prices</Link>
-      </button>
+      <div className='buttons-conteiner'>
+          <Link className="basic-button list-button" title='to current shopping list' to={`/shoppingList/${listId}`} />
+          <Link className="basic-button compare-button" title='compare prices' to={`/comparePrices/${listId}`} />
+      </div>
+        
     </div>
   );
 }

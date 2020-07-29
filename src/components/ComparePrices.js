@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { PRICE_COMPARISON } from "../graphql/queries";
 import { cloneObj } from "../utils";
+import "./ComparePrices.css"
 
 export default function ComparePrices() {
   const listId = parseInt(useParams().id);
@@ -66,40 +67,6 @@ export default function ComparePrices() {
     }
   }, [data]);
 
-  // function addStore(id, state) {
-  //   let totalForStore = 0;
-  //   const newProducts = state.products.map((p) => {
-  //     const { amount, prices, totals } = p;
-  //     const storePrice = prices.find((sp) => {
-  //       return sp.storeId === id;
-  //     });
-  //     let storeTotalForThisProduct;
-  //     if (!amount || !storePrice) {
-  //       storeTotalForThisProduct = 0;
-  //     } else {
-  //       storeTotalForThisProduct = storePrice.price * amount;
-  //     }
-  //     totalForStore += storeTotalForThisProduct;
-  //     totals[id] = storeTotalForThisProduct;
-  //     return { ...p, totals: totals };
-  //   });
-
-  //   const newTotals = { ...state.totals };
-  //   newTotals[id] = totalForStore;
-
-  //   const newSelectedStores = state.selectedStores;
-  //   newSelectedStores.push(id);
-
-  //   set_state({
-  //     ...state,
-  //     selectedStores: newSelectedStores,
-  //     products: newProducts,
-  //     totals: newTotals,
-  //   });
-  // }
-
-  // function removeStore(id, state) {}
-
   if (loading || !state) {
     return "...loading";
   }
@@ -109,14 +76,12 @@ export default function ComparePrices() {
   }
 
   return (
-    <div>
+    <div className='list-container'>
       <h2>Compare prices here</h2>
-      <Link className="basic-button" to={`/editPage/${listId}`}>edit list</Link>
-      <button>+</button>
-      <table>
+      <table cellSpacing='0'>
         <thead>
           <tr>
-            <td>Product</td>
+            <td><strong>Product</strong></td>
             {state.stores.map((s) => {
               return (
                 <td key={s.id}>
@@ -147,17 +112,12 @@ export default function ComparePrices() {
           </tr>
         </tbody>
       </table>
-      <pre>
-        <code>{JSON.stringify(state, null, "  ")}</code>
-      </pre>
+      <div className='buttons-conteiner'>
+      <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`} />
+      <Link className='basic-button prices-button' title='enter prices' to={`/enterPrices/${listId}`} />
+      <Link className='basic-button home-button' title='home' to={`/`} />
+      </div>
     </div>
   );
 }
 
-function StoreSelect(props) {
-  return (
-    <select>
-      <option>123</option>
-    </select>
-  );
-}

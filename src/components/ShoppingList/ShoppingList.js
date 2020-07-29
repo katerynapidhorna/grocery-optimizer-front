@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { InputGroup } from 'react-bootstrap';
 import "./ShoppingList.css";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
@@ -33,7 +34,7 @@ export default function ShoppingList() {
               return (
                 <li key={i}>
                   {p.name}
-                  <input type="checkbox" />
+                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
                 </li>
               );
             })}
@@ -41,10 +42,10 @@ export default function ShoppingList() {
       </div>
       
       <div className='buttons-conteiner'>
-      <Link className='basic-button'  to={`/editPage/${listId}`}>edit list</Link> 
-      <Link className='basic-button' to={`/enterPrices/${listId}`}>enter prices</Link>
-      <Link className='basic-button' to={`/comparePrices/${listId}`}>compare stores</Link>
-      <Link className='basic-button' to={`/`}>Home</Link>
+      <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`}></Link> 
+      <Link className='basic-button prices-button' title='enter prices' to={`/enterPrices/${listId}`}></Link>
+      <Link className='basic-button compare-button' title='compare prices' to={`/comparePrices/${listId}`}></Link>
+      <Link className='basic-button home-button' title='home' to={`/`}></Link>
       </div>
     </div>
   );
