@@ -16,14 +16,14 @@ export default function Loginpage() {
 
     console.log("response.data.token", response.data.token);
     localStorage.setItem("jwt", response.data.token);
-    history.push("/homepage");
+    history.push("/");
   }
 
   return (
     <div className="form-container">
       <h2>Login</h2>
       <form
-        action="/homepage"
+        action="/"
         onSubmit={(e) => {
           e.preventDefault();
           postUserData(userEmail, userPassword);

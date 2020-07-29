@@ -2,8 +2,14 @@ body {
   text-align: center;
 }
 
-.list-container {
-  margin-top: 10%;
+h2 {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+}
+
+.shoppinglists-container {
+  margin: -17px auto;
+  border-radius: 3px;
 }
 
 .shoppinglist-box {
@@ -26,6 +32,8 @@ body {
 
 .shoppinglist-box a {
   display: block;
+  background-color: #e2f0f1;
+  border-radius: 3px;
   font-size: 1em;
   font-weight: bold;
   width: 400px;
@@ -33,4 +41,15 @@ body {
   color: black;
   text-decoration: none;
 
+}
+
+@media only screen and (max-width: 600px) { /* I've given 1023px but you can change to proper width */
+  .shoppinglist-box a {
+    width: 211px !important;
+  }
+
+}
+
+.button-create-new {
+  margin: auto;
 }
