@@ -30,6 +30,7 @@ export default function Loginpage() {
         }}
       >
         <input
+          className='auth-input'
           type="email"
           placeholder="email"
           value={userEmail}
@@ -38,6 +39,7 @@ export default function Loginpage() {
           }}
         />
         <input
+          className='auth-input'
           type="password"
           placeholder="password"
           value={userPassword}
@@ -45,9 +47,9 @@ export default function Loginpage() {
             set_userPassword(e.target.value);
           }}
         />
-        <input type="submit" />
+        <input className='submit' type="submit" />
       </form>
-      <Link to="/signup">create new accaunt</Link>
+      <Link className='sign-up' to="/signup">create new accaunt</Link>
     </div>
   );
 }

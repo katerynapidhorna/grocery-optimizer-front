@@ -1,12 +1,17 @@
+h2 {
+  padding-top: 1em!important;
+}
+
 .list-container {
   margin:auto ;
+  margin-top: 15%!important;
   width: 50%;
+  min-width: 400px;
   margin-top: 30px;
   flex-direction: column;
   box-shadow: 0 0 3px gray;
   border-radius: 3px;
   padding-bottom: 40px;
-  background-color: #e2f0f1;
 }
 
 .list {
@@ -21,19 +26,16 @@
 .list ul li {
   display: flex;
   justify-content: space-between;
+  margin: 0 40px;
   padding: 1em 0 0 0px;
   text-align: left;
   border-bottom: 1px solid;
 }
 
-.buttons-conteiner {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .reset-button {
   width: fit-content;
   background-color: #da6e6e;
+  border: 0;
   border-radius: 5px;
   color: white;
   padding: 0.5em;
@@ -41,22 +43,30 @@
   text-transform: uppercase;
 }
 
+.reset-button:active {
+  box-shadow: inset 0 0 3px;
+}
+
 .basic-button {
   font-size: 14px;
 }
 
 
-@media only screen and (max-width: 600px) { /* I've given 1023px but you can change to proper width */
+@media only screen and (max-width: 611px) { /* I've given 1023px but you can change to proper width */
   .list-container  {
     margin-top: 10px;
-  }
-
-  .buttons-conteiner {
-    flex-direction: column;
+    min-width: 210px;
   }
 
   .basic-button {
     margin: auto;
     margin-bottom: 10px !important;
   }
+
+  .list ul li {
+    margin: 0;
+  }
 }
+
+
+/* ____________________ */

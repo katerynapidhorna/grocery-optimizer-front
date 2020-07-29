@@ -7,7 +7,7 @@ import { ADD_SHOPPING_LIST } from "../../graphql/mutations";
 
 export default function Homepage() {
   const [addShoppingList, { title, userId }] = useMutation(ADD_SHOPPING_LIST);
-  const { loading, error, data } = useQuery(GET_USER);
+  const { loading, error, data, refetch } = useQuery(GET_USER);
   const history = useHistory();
 
   if (loading) return "Loading...";
@@ -31,6 +31,7 @@ export default function Homepage() {
             const res = await addShoppingList({
               variables: { title: "My new List", userId: data.user.id },
             });
+            refetch()
             history.push(`/editPage/${res.data.addShoppinList.id}`);
           }}
         >

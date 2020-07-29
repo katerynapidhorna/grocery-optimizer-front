@@ -25,21 +25,21 @@ export default function Signup() {
       e.preventDefault()
       createNewUser(newEmail,newPassword)
     }}>
-      <input type='email' 
+      <input className='auth-input' type='email' 
              placeholder='email' 
              value={newEmail}
              onChange={(e)=>{
               set_newEmail(e.target.value)
              }}
       />
-      <input type='password' 
+      <input className='auth-input' type='password' 
              placeholder='password'
              value={newPassword} 
              onChange={(e)=>{
               set_newPassword(e.target.value)
              }}
       />
-    <input type='submit' value='sign up' />
+    <input className='submit' type='submit' value='sign up' />
     </form>
   </div>
   )

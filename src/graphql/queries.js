@@ -19,6 +19,7 @@ export const GET_SHOPPING_LIST = gql`
         name
         unit
         purchased
+        amount
       }
     }
   }

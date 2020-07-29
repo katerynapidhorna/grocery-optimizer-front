@@ -1,12 +1,52 @@
+
+
 form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-form input {
+form .auth-input {
   margin: 1em;
+  border: 2px solid #eee;
   padding: 1em;
   box-shadow: 0 0 1px;
   border-radius: 3px;
+  font-weight: bold;
+  transition: 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transition: padding,width;
+}
+
+
+
+form .auth-input:focus {
+  padding: 1.5em;
+  transition: all 0.7s ease;
+}
+
+.submit {
+  display: block;
+  width: fit-content;
+  margin-left: 12px;
+  margin-top: 10px;
+  padding: 6px 11px;
+}
+
+.sign-up {
+  margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    color: #5f2626;
+    width: fit-content;
+    margin-left: 12px;
+}
+
+
+
+@media only screen and (max-width: 600px) { /* I've given 1023px but you can change to proper width */
+  form .auth-input:focus {
+    margin: auto;
+    width: 120px !important;
+    transition: all 0.3s ease;
+  }
 }
