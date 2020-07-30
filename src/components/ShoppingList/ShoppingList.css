@@ -1,10 +1,14 @@
-h2 {
-  padding-top: 1em!important;
+.list-title {
+  padding-top: 1em !important;
+  text-transform: capitalize;
+  font-size: 2em;
+  color: #7036ad;
+  font-weight: 800;
 }
 
 .list-container {
-  margin:auto ;
-  margin-top: 15%!important;
+  margin: auto;
+  margin-top: 15% !important;
   width: 50%;
   min-width: 400px;
   margin-top: 30px;
@@ -15,7 +19,7 @@ h2 {
 }
 
 .list {
-  padding: 1em
+  padding: 1em;
 }
 
 .list ul {
@@ -51,9 +55,9 @@ h2 {
   font-size: 14px;
 }
 
-
-@media only screen and (max-width: 611px) { /* I've given 1023px but you can change to proper width */
-  .list-container  {
+@media only screen and (max-width: 611px) {
+  /* I've given 1023px but you can change to proper width */
+  .list-container {
     margin-top: 10px;
     min-width: 210px;
   }
@@ -67,6 +71,5 @@ h2 {
     margin: 0;
   }
 }
-
 
 /* ____________________ */
