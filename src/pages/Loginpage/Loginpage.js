@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import "./Loginpage.css";
 
-export default function Loginpage() {
+export default function Loginpage(props) {
   const [userEmail, set_userEmail] = useState("");
   const [userPassword, set_userPassword] = useState("");
   const history = useHistory();
@@ -14,9 +14,9 @@ export default function Loginpage() {
       password,
     });
 
-    console.log("response.data.token", response.data.token);
     localStorage.setItem("jwt", response.data.token);
     history.push("/");
+    props.setLoginStatus(true);
   }
 
   return (
@@ -30,7 +30,7 @@ export default function Loginpage() {
         }}
       >
         <input
-          className='auth-input'
+          className="auth-input"
           type="email"
           placeholder="email"
           value={userEmail}
@@ -39,7 +39,7 @@ export default function Loginpage() {
           }}
         />
         <input
-          className='auth-input'
+          className="auth-input"
           type="password"
           placeholder="password"
           value={userPassword}
@@ -47,9 +47,11 @@ export default function Loginpage() {
             set_userPassword(e.target.value);
           }}
         />
-        <input className='submit' type="submit" />
+        <input className="submit" type="submit" />
       </form>
-      <Link className='sign-up' to="/signup">create new accaunt</Link>
+      <Link className="sign-up" to="/signup">
+        create new accaunt
+      </Link>
     </div>
   );
 }

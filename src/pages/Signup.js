@@ -4,7 +4,8 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function Signup() {
+export default function Signup(props) {
+  
   const[newEmail,set_newEmail] = useState('')
   const[newPassword,set_newPassword] = useState('')
   // const [createNewUser, { email,password }] = useMutation(CREATE_NEW_USER);
@@ -16,6 +17,7 @@ export default function Signup() {
     })
     localStorage.setItem("jwt", response.data.token);
     history.replace("/");
+    props.setLoginStatus(true);
   }
 
   return (
