@@ -90,13 +90,26 @@ font-size: 2em;
 }
 
 .nav-manu li {
+  position: relative;
   padding-bottom: 10px;
-  padding: 22px 50px 22px 50px;
+  padding: 22px 77px;
   border: 1px solid;
 }
 
 .nav-manu li:hover {
   background-color: #e2f0f1;
+}
+
+.nav-manu li a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0px;
+    height: 46px;
+    padding: 12px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .manu div {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import {
   createHttpLink,
@@ -16,8 +16,8 @@ import { ApolloLink } from "@apollo/client";
 import Navigation from "./components/Navigation";
 import Editlist from "./components/Editlist/Editlist";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
-import EnterPrices from "./components/EnterPrices"
-import ComparePrices from "./components/ComparePrices"
+import EnterPrices from "./components/EnterPrices";
+import ComparePrices from "./components/ComparePrices";
 import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
@@ -45,14 +45,22 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-console.log(client);
 function App() {
+  const [loggedIn, set_loggedIn] = useState(localStorage.getItem("jwt"));
+  function setLoginStatus(val) {
+    set_loggedIn(val);
+  }
+
   return (
     <ApolloProvider client={client}>
-      <Navigation />
+      <Navigation isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
       <Switch>
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={Loginpage} />
+        <Route exact path="/signup">
+          <Signup isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
+          </Route>
+        <Route exact path="/login">
+          <Loginpage isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
+        </Route>
         <Route exact path="/" component={Homepage} />
         <Route path="/editPage/:id" component={Editlist} />
         <Route path="/shoppingList/:id" component={ShoppingList} />
