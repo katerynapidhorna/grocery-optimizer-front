@@ -1,3 +1,9 @@
+.select-store {
+  margin: 0 10px;
+  padding: 0.4em;
+  font-weight: bold;
+}
+
 .input-box {
   width: fit-content;
   margin: auto;
@@ -6,16 +12,33 @@
 .input-box {
   display: flex;  
   margin-bottom: 10px;
-  flex-direction: column;
+  width: 70%;
+  justify-content: space-between;
 }
 
-span {
+.product-container {
+  width: 70%;
+}
+
+.product {
+  font-weight: bold;
   padding-bottom: 10px;
+  margin-right: 10px;
 }
 
   
   .input-price {
-    padding: 10px;
+    font-weight: bold;
+    padding: 0.4em;
+    width: 10%;
+  }
+
+  .complete-button {
+    font-size: 15px;
+    padding: 0.5em;
+    background-color: #4caf50b8;
+    border: none;
+    border-radius: 3px;
   }
 
 @media only screen and (max-width: 611px) {

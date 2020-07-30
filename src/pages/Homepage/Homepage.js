@@ -9,13 +9,16 @@ export default function Homepage() {
   const [addShoppingList, { title, userId }] = useMutation(ADD_SHOPPING_LIST);
   const { loading, error, data, refetch } = useQuery(GET_USER);
   const history = useHistory();
+  const colors = ['rgb(231 90 110)']
+
+  
 
   if (loading) return "Loading...";
   if (error) return error.message;
 
   return (
     <div className="shoppinglists-container">
-      <h2>Your personal shopping lists</h2>
+      <h1>Your shopping lists</h1>
       {data &&
         data.shoppingLists.map((list) => {
           return (

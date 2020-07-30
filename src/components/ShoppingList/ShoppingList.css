@@ -1,8 +1,9 @@
 .list-title {
   padding-top: 1em !important;
+  margin-top: 10px;
   text-transform: capitalize;
-  font-size: 2em;
-  color: #7036ad;
+  text-shadow: 0 0 6px #fff;
+  font-size: 1.5em;
   font-weight: 800;
 }
 
@@ -10,16 +11,16 @@
   margin: auto;
   margin-top: 15% !important;
   width: 50%;
-  min-width: 400px;
   margin-top: 30px;
   flex-direction: column;
-  box-shadow: 0 0 3px gray;
+  box-shadow: 0 0 20px gray;
   border-radius: 3px;
   padding-bottom: 40px;
 }
 
 .list {
   padding: 1em;
+  margin-bottom: 30px;
 }
 
 .list ul {
@@ -33,6 +34,7 @@
   margin: 0 40px;
   padding: 1em 0 0 0px;
   text-align: left;
+  font-weight: bold;
   border-bottom: 1px solid;
 }
 
@@ -56,12 +58,6 @@
 }
 
 @media only screen and (max-width: 611px) {
-  /* I've given 1023px but you can change to proper width */
-  .list-container {
-    margin-top: 10px;
-    min-width: 210px;
-  }
-
   .basic-button {
     margin: auto;
     margin-bottom: 10px !important;
@@ -71,5 +67,7 @@
     margin: 0;
   }
 }
+
+
 
 /* ____________________ */
