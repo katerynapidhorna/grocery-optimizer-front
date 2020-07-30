@@ -10,13 +10,13 @@ export default function ShoppingList() {
   const listId = parseInt(useParams().id);
   const[checkedId,set_checkedId] = useState([])
   const [productsList, set_productsList] = useState(null);
-  const { loading, error, data } = useQuery(GET_SHOPPING_LIST, {
+  const { loading, error, data, refetch } = useQuery(GET_SHOPPING_LIST, {
     variables: {
       id: listId,
     },
   });
 
-  const [updatePurchased, { productId, purchased }] = useMutation(
+  const [updatePurchased, { productId, purchased, shoppinglistId }] = useMutation(
     UPDATE_PURCHASED
   );
 
@@ -38,9 +38,9 @@ export default function ShoppingList() {
         <h2 className='list-title'>{productsList && productsList.title}</h2>
         <button className='reset-button '
           onClick={async()=>{
-            console.log('checkedId',typeof checkedId)
             if(checkedId.length) {
-              await updatePurchased({ variables:{productId:checkedId,purchased:false}})
+              await updatePurchased({ variables:{productId:checkedId,purchased:false,shoppinglistId:listId}})
+              refetch()
             }
           }}
         >reset checkboxs</button> 
@@ -50,7 +50,7 @@ export default function ShoppingList() {
               return (
                 <li key={i}>
                   {p.name}
-                  <InputGroup.Checkbox  onChange={async (e)=>{
+                  <InputGroup.Checkbox checked={p.purchased} onChange={async (e)=>{
                     
                     if(checkedId.indexOf(p.id) === -1 && e.target.checked) {
                       // if there is no such id => add id
@@ -62,7 +62,8 @@ export default function ShoppingList() {
                       }))
                     }
                       // update purchased
-                      await updatePurchased({ variables:{productId:[p.id],purchased:e.target.checked}})
+                      await updatePurchased({ variables:{productId:[p.id],purchased:e.target.checked,shoppinglistId:listId}})
+                      refetch()
                   }} />
                 </li>
               );
