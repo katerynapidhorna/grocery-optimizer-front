@@ -28,6 +28,8 @@ export default function Editlist() {
   if (loading) return "Loading...";
   if (error) return error.message;
 
+  console.log(data)
+
   function removeOne(index) {
     return productsList.products.filter((p, i) => {
       if (i !== index) {
@@ -35,6 +37,8 @@ export default function Editlist() {
       }
     });
   }
+
+
   return (
     <div className="list-container">
       <form>
@@ -53,7 +57,7 @@ export default function Editlist() {
             return (
               <div key={i} className="input-container">
                 <input
-                  className="ptoduct-input"
+                  className="product-input"
                   type="text"
                   placeholder="product name"
                   value={product.name}
@@ -83,7 +87,7 @@ export default function Editlist() {
                     set_productsList({ ...productsList, products: newArray });
                   }}
                 />
-                <button
+                <span
                   className="remove-item"
                   onClick={(e) => {
                     e.preventDefault();
@@ -93,14 +97,13 @@ export default function Editlist() {
                     });
                   }}
                 >
-                  <span>&#10005;</span>
-                </button>
+                </span>
               </div>
             );
           })}
         <div className="input-container">
           {productsList && (
-            <button
+            <span
               className="add-item"
               onClick={(e) => {
                 e.preventDefault();
@@ -113,12 +116,19 @@ export default function Editlist() {
                 });
               }}
             >
-              <span>&#43;</span>
-            </button>
+            </span>
           )}
         </div>
       </form>
-      <button
+      <div className='buttons-conteiner'>
+        <div className='controls'>
+          <Link className="basic-button list-button" title='to current shopping list' to={`/shoppingList/${listId}`} />
+          <span>Back to list</span>
+        </div>
+        <div className='controls'>
+        <p
+        title='update list'
+        className='basic-button update-button'
         onClick={async (e) => {
           e.preventDefault();
           await updateShoppingList({
@@ -137,11 +147,17 @@ export default function Editlist() {
           refetch();
         }}
       >
-        update
-      </button>
-      <div className='buttons-conteiner'>
-          <Link className="basic-button list-button" title='to current shopping list' to={`/shoppingList/${listId}`} />
+      </p>
+      <span>Update list</span>
+        </div>
+        <div className='controls'>
           <Link className="basic-button compare-button" title='compare prices' to={`/comparePrices/${listId}`} />
+          <span>Compare prices</span>
+        </div>
+        <div className='controls'>
+          <Link className="basic-button home-button" title='home' to={`/`} />
+        <span>Home</span>
+        </div>
       </div>
         
     </div>

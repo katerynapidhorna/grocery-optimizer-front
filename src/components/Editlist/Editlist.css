@@ -1,6 +1,6 @@
 .edit-container {
   margin-top: 10%;
-  margin: 10% 30% ;
+  margin: 10% 30%;
   flex-direction: column;
   box-shadow: 0 0 3px gray;
   border-radius: 3px;
@@ -10,29 +10,81 @@
 .input-container {
   display: flex;
   position: relative;
+  margin: auto;
+  margin-bottom: 25px;
+}
+
+form {
+  margin-bottom: 50px;
 }
 
 .title-input {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
   padding: 0.5em;
   width: 60%;
-  margin: auto;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.5em;
   text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: transparent;
+}
+
+.product-input {
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
 }
 
 .amount-input {
+  font-weight: bold;
   width: 30px;
+  margin-left: 0;
+  box-shadow: inset 0 0 2px grey;
+  border: none;
+  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
+}
+
+input {
+  margin-left: 20px;
 }
 
 .remove-item {
-  height: fit-content;
-  margin: auto;
-  font-size: 18px;
+  background-image: url("../../img/delete.png");
+  margin-left: 20px;
+  padding: 0;
+  height: 23px;
+  width: 20px;
+  background-repeat: no-repeat;
+  background-position: -1px 0px;
+  background-size: 23px;
 }
 
 .add-item {
   position: absolute;
-  top: 0px;
-  left: 13px;
+  background-repeat: no-repeat;
+  background-image: url("../../img/add.png");
+  background-size: 20px;
+  top: 0;
+  right: -57px;
+  width: 30px;
+  height: 30px;
 }
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 698px) {
+
+  .remove-item {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
+  .add-item {
+    top: -2px;
+    right: -12px;
+  }
+}

@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { PRICE_COMPARISON } from "../graphql/queries";
 import { cloneObj } from "../utils";
-import "./ComparePrices.css"
+import "./ComparePrices.css";
 
 export default function ComparePrices() {
   const listId = parseInt(useParams().id);
@@ -76,12 +76,14 @@ export default function ComparePrices() {
   }
 
   return (
-    <div className='list-container'>
+    <div className="list-container">
       <h2>Compare prices here</h2>
-      <table cellSpacing='0'>
+      <table cellSpacing="0">
         <thead>
           <tr>
-            <td><strong>Product</strong></td>
+            <td>
+              <strong>Product</strong>
+            </td>
             {state.stores.map((s) => {
               return (
                 <td key={s.id}>
@@ -112,12 +114,28 @@ export default function ComparePrices() {
           </tr>
         </tbody>
       </table>
-      <div className='buttons-conteiner'>
-      <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`} />
-      <Link className='basic-button prices-button' title='enter prices' to={`/enterPrices/${listId}`} />
-      <Link className='basic-button home-button' title='home' to={`/`} />
+      <div className="buttons-conteiner">
+        <div className="controls">
+          <Link
+            className="basic-button edit-button"
+            title="edit list"
+            to={`/editPage/${listId}`}
+          ></Link>
+          <span>Edit list</span>
+        </div>
+        <div className="controls">
+          <Link
+            className="basic-button prices-button"
+            title="enter prices"
+            to={`/enterPrices/${listId}`}
+          ></Link>
+          <span>Enter prices</span>
+        </div>
+        <div className="controls">
+          <Link className="basic-button home-button" title="home" to={`/`} />
+          <span>Home</span>
+        </div>
       </div>
     </div>
   );
 }
-

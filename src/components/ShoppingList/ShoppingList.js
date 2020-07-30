@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { InputGroup } from 'react-bootstrap';
 import "./ShoppingList.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useHistory } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { UPDATE_PURCHASED } from "../../graphql/mutations";
 import { GET_SHOPPING_LIST } from "../../graphql/queries";
 
 export default function ShoppingList() {
+  const history = useHistory();
   const listId = parseInt(useParams().id);
   const[checkedId,set_checkedId] = useState([])
   const [productsList, set_productsList] = useState(null);
@@ -25,6 +26,13 @@ export default function ShoppingList() {
       set_productsList(data.shoppingList);
     }
   }, [data]);
+
+  useEffect(()=>{
+    if(error) {
+      history.push('/login')
+    }
+  },[error])
+
 
 
   if (loading) return "Loading...";
@@ -72,11 +80,27 @@ export default function ShoppingList() {
       </div>
       
       <div className='buttons-conteiner'>
-      <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`}></Link> 
-      <Link className='basic-button prices-button' title='enter prices' to={`/enterPrices/${listId}`}></Link>
-      <Link className='basic-button compare-button' title='compare prices' to={`/comparePrices/${listId}`}></Link>
-      <Link className='basic-button home-button' title='home' to={`/`}></Link>
+      <div className='controls'>
+        <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`}></Link> 
+        <span>Edit list</span>
       </div>
+      <div className='controls'>
+        <Link className='basic-button prices-button' title='enter prices' to={`/enterPrices/${listId}`}></Link>
+        <span>Enter prices</span>
+      </div>
+      <div className='controls'>
+       <Link className='basic-button compare-button' title='compare prices' to={`/comparePrices/${listId}`}></Link>
+       <span>Compare prices</span>
+      </div>
+      <div className='controls'>
+       <Link className='basic-button home-button' title='home' to={`/`}></Link>
+       <span>Home</span>
+      </div>
+      </div>
+    
+  
+      
+      
     </div>
   );
 }
