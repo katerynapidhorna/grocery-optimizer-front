@@ -38,3 +38,12 @@ export const UPDATE_PRICES = gql`
     }
   }
 `;
+
+export const UPDATE_PURCHASED = gql`
+  mutation UpdatePurchased($productId: [Int],$purchased: Boolean!) {
+    updatePurchased(productId:$productId,purchased:$purchased) {
+      productId
+      purchased
+    }
+  }
+`
