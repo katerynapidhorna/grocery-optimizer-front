@@ -34,7 +34,7 @@ export default function ShoppingList(props) {
     handleNetworkError(error, props.history);
     return error.message;
   }
-
+console.log(data)
   return (
     <div className="list-container">
       <div className="list">
@@ -61,7 +61,7 @@ export default function ShoppingList(props) {
             productsList.products.map((p, i) => {
               return (
                 <li key={i}>
-                  {p.name}
+                  {p.name} x {p.amount}
                   <InputGroup.Checkbox
                     checked={p.purchased}
                     onChange={async (e) => {
