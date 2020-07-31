@@ -12,9 +12,7 @@ import { showPopup } from ".././Popup";
 export default function Editlist(props) {
   const listId = parseInt(useParams().id);
   const [productsList, set_productsList] = useState(null);
-  const [updateShoppingList, { list, products }] = useMutation(
-    UPDATE_SHOPPING_LIST
-  );
+  const [updateShoppingList] = useMutation(UPDATE_SHOPPING_LIST);
   const { loading, error, data, refetch } = useQuery(GET_SHOPPING_LIST, {
     variables: {
       id: listId,
@@ -38,6 +36,7 @@ export default function Editlist(props) {
       if (i !== index) {
         return p;
       }
+      return false;
     });
   }
 

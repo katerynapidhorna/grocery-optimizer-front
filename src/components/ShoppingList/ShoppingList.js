@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { InputGroup } from "react-bootstrap";
 import "./ShoppingList.css";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { UPDATE_PURCHASED } from "../../graphql/mutations";
 import { GET_SHOPPING_LIST } from "../../graphql/queries";
 import { handleNetworkError } from "../../utils";
 
 export default function ShoppingList(props) {
-  const history = useHistory();
   const listId = parseInt(useParams().id);
   const [checkedId, set_checkedId] = useState([]);
   const [productsList, set_productsList] = useState(null);
@@ -18,10 +17,7 @@ export default function ShoppingList(props) {
     },
   });
 
-  const [
-    updatePurchased,
-    { productId, purchased, shoppinglistId },
-  ] = useMutation(UPDATE_PURCHASED);
+  const [updatePurchased] = useMutation(UPDATE_PURCHASED);
 
   useEffect(() => {
     if (data) {
@@ -34,7 +30,7 @@ export default function ShoppingList(props) {
     handleNetworkError(error, props.history);
     return error.message;
   }
-console.log(data)
+  console.log(data);
   return (
     <div className="list-container">
       <div className="list">

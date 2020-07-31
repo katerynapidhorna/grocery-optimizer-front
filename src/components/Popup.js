@@ -34,9 +34,9 @@ export default function Popup() {
         set_isVisible(false);
       }, 2500);
     }
-  }, [isVisible]);
+  }, [isVisible, message]);
 
-  let className = (type === 'Error') ? "popup-red" : 'popup-green';
+  let className = type === "Error" ? "popup-red" : "popup-green";
   if (!isVisible) {
     className += " hidden";
   }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Alert } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { PRICE_INPUT } from "../graphql/queries";
 import { UPDATE_PRICES } from "../graphql/mutations";
@@ -21,7 +20,7 @@ export default function EnterPrices() {
     }
   );
   const [selectedStoreId, set_selectedStoreId] = useState("");
-  const [updatePrices, pricesUpdateStatus] = useMutation(UPDATE_PRICES);
+  const [updatePrices] = useMutation(UPDATE_PRICES);
 
   useEffect(() => {
     if (selectedStoreId && productsList) {
@@ -51,7 +50,7 @@ export default function EnterPrices() {
         set_selectedStoreId(data.stores[0].id.toString());
       }
     }
-  }, [data]);
+  }, [data, selectedStoreId]);
 
   if (loading) {
     return "Loading...";
@@ -128,7 +127,7 @@ export default function EnterPrices() {
                 });
                 // show success message
                 if (res) {
-                  showPopup("success", "completed");
+                  showPopup("success", "Prices are updated");
                 }
 
                 refetchPricesInput();
