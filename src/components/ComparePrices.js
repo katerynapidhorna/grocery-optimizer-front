@@ -76,13 +76,11 @@ export default function ComparePrices() {
 
   return (
     <div className="list-container">
-      <h2  className='compare-prices-title'>Compare prices here</h2>
-      <table cellSpacing="0">
+      <h2 className="compare-prices-title">Prices comparison</h2>
+      <table className="prices-table" cellSpacing="0">
         <thead>
           <tr>
-            <td>
-              <strong>Product</strong>
-            </td>
+            <td></td>
             {state.stores.map((s) => {
               return (
                 <td key={s.id}>

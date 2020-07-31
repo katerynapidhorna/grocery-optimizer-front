@@ -6,8 +6,11 @@ import "./Editlist.css";
 import { GET_SHOPPING_LIST } from "../../graphql/queries";
 import { UPDATE_SHOPPING_LIST } from "../../graphql/mutations";
 import { cloneObj } from "../../utils";
+import { NOT_AUTHORISED_STATUS_CODE } from "../../constants";
+import { handleNetworkError } from "../../utils";
+import { showPopup } from ".././Popup";
 
-export default function Editlist() {
+export default function Editlist(props) {
   const listId = parseInt(useParams().id);
   const [productsList, set_productsList] = useState(null);
   const [updateShoppingList, { list, products }] = useMutation(
@@ -26,7 +29,10 @@ export default function Editlist() {
   }, [data]);
 
   if (loading) return "Loading...";
-  if (error) return error.message;
+  if (error) {
+    handleNetworkError(error, props.history);
+    return error.message;
+  }
 
   function removeOne(index) {
     return productsList.products.filter((p, i) => {
@@ -113,24 +119,12 @@ export default function Editlist() {
               }}
             ></span>
           )}
-        </div>
-      </form>
-      <div className="buttons-conteiner">
-        <div className="controls">
-          <Link
-            className="basic-button list-button"
-            title="to current shopping list"
-            to={`/shoppingList/${listId}`}
-          />
-          <span>Back to list</span>
-        </div>
-        <div className="controls">
-          <p
+          <button
+            className="update-list"
             title="update list"
-            className="basic-button update-button"
             onClick={async (e) => {
               e.preventDefault();
-              await updateShoppingList({
+              const res = await updateShoppingList({
                 variables: {
                   title: productsList.title,
                   id: listId,
@@ -143,10 +137,34 @@ export default function Editlist() {
                   }),
                 },
               });
+              if (res) {
+                showPopup("success", "List updated");
+              } else {
+                showPopup("error", "Somthing went wrong");
+              }
               refetch();
             }}
-          ></p>
-          <span>Update list</span>
+          >
+            Update list
+          </button>
+        </div>
+      </form>
+      <div className="buttons-conteiner">
+        <div className="controls">
+          <Link
+            className="basic-button list-button"
+            title="to current shopping list"
+            to={`/shoppingList/${listId}`}
+          />
+          <span>Back to list</span>
+        </div>
+        <div className="controls">
+          <Link
+            className="basic-button prices-button"
+            title="enter prices"
+            to={`/enterPrices/${listId}`}
+          ></Link>
+          <span>Enter prices</span>
         </div>
         <div className="controls">
           <Link

@@ -1,0 +1,1 @@
+export const NOT_AUTHORISED_STATUS_CODE = 401;

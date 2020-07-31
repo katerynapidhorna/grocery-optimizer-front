@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { PRICE_INPUT } from "../graphql/queries";
 import { UPDATE_PRICES } from "../graphql/mutations";
 import "./EnterPrices.css";
+import { showPopup } from "./Popup";
 
 export default function EnterPrices() {
   const listId = parseInt(useParams().id);
@@ -61,7 +63,7 @@ export default function EnterPrices() {
 
   return (
     <div className="list-container">
-      <h1>
+      <h1 className="enter-prices-title">
         Enter
         <select
           className="select-store"
@@ -90,6 +92,7 @@ export default function EnterPrices() {
                 <input
                   className="input-price"
                   type="number"
+                  min="1"
                   value={p.newPrice}
                   onChange={(e) => {
                     set_productsForm(
@@ -107,12 +110,12 @@ export default function EnterPrices() {
               </div>
             );
           })}
-          <div class="complete-button-wrp">
+          <div className="complete-button-wrp">
             <button
               className="complete-button"
               onClick={async (e) => {
                 e.preventDefault();
-                await updatePrices({
+                const res = await updatePrices({
                   variables: {
                     prices: productsForm.map((p) => {
                       return {
@@ -123,6 +126,11 @@ export default function EnterPrices() {
                     }),
                   },
                 });
+                // show success message
+                if (res) {
+                  showPopup("success", "completed");
+                }
+
                 refetchPricesInput();
               }}
             >

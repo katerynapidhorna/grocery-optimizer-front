@@ -19,6 +19,7 @@ import ShoppingList from "./components/ShoppingList/ShoppingList";
 import EnterPrices from "./components/EnterPrices";
 import ComparePrices from "./components/ComparePrices";
 import Signup from "./pages/Signup";
+import Popup from "./components/Popup";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
@@ -54,6 +55,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navigation isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
+      <Popup />
       <Switch>
         <Route exact path="/signup">
           <Signup isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />

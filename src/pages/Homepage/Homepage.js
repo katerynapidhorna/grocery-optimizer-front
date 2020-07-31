@@ -4,17 +4,19 @@ import { Link, Redirect, useHistory } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GET_USER } from "../../graphql/queries";
 import { ADD_SHOPPING_LIST } from "../../graphql/mutations";
+import { handleNetworkError } from "../../utils";
 
-export default function Homepage() {
+export default function Homepage(props) {
   const [addShoppingList, { title, userId }] = useMutation(ADD_SHOPPING_LIST);
   const { loading, error, data, refetch } = useQuery(GET_USER);
   const history = useHistory();
-  const colors = ['rgb(231 90 110)']
-
-  
+  const colors = ["rgb(231 90 110)"];
 
   if (loading) return "Loading...";
-  if (error) return error.message;
+  if (error) {
+    handleNetworkError(error, props.history);
+    return error.message;
+  }
 
   return (
     <div className="shoppinglists-container">
@@ -28,13 +30,14 @@ export default function Homepage() {
           );
         })}
       <div className="shoppinglist-box">
-        <Link to='#'
+        <Link
+          to="#"
           onClick={async (e) => {
             e.preventDefault();
             const res = await addShoppingList({
               variables: { title: "My new List", userId: data.user.id },
             });
-            refetch()
+            refetch();
             history.push(`/edit/${res.data.addShoppinList.id}`);
           }}
         >
