@@ -1,6 +1,5 @@
-import { NOT_AUTHORISED_STATUS_CODE } from "./constants";
+import { NOT_AUTHORISED_STATUS_CODE ,BAD_REQUEST} from "./constants";
 import { showPopup } from "./components/Popup";
-import { browserHistory } from "react-router";
 
 // https://levelup.gitconnected.com/ways-to-clone-an-object-in-javascript-e1e5beaaf564
 export function cloneObj(obj) {
@@ -18,6 +17,14 @@ export function handleNetworkError(error, history) {
   ) {
     setTimeout(() => {
       showPopup("Error", "Unauthorised");
+      history.push("/login");
+    }, 0);
+  } else if (
+    error.networkError &&
+    error.networkError.statusCode === BAD_REQUEST
+  ) {
+    setTimeout(() => {
+      showPopup("Error", "Bad request");
       history.push("/login");
     }, 0);
   }

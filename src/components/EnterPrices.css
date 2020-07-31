@@ -59,31 +59,6 @@
   box-shadow: inset 0 0 6px gray;
 }
 
-.show-success-message {
-  position: absolute;
-  width: fit-content;
-  font-weight: bold;
-  border-radius: 7px;
-  left: 33%;
-  top: -100px;
-  z-index: 300;
-  background-color: #7ee767e3;
-  padding: 2em;
-  animation-name: example;
-  animation-duration: 4s;
-}
-
-.hide {
-  display: none;
-}
-
-@keyframes example {
-  0% {opacity: 1}
-  25% {opacity: 1;}
-  50% {opacity: 0.7;}
-  75% {opacity: 0.4;}
-  100% {opacity: 0;}
-}
 @media only screen and (max-width: 611px) {
   .show-success-message {
     left: 20%;
