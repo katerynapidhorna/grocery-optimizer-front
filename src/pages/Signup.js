@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { CREATE_NEW_USER } from "../graphql/mutations";
-import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import {
-  createHttpLink,
   InMemoryCache,
   HttpLink,
   ApolloClient,
   from,
 } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import Homepage from "./pages/Homepage/Homepage";
 import Loginpage from "./pages/Loginpage/Loginpage";
@@ -20,10 +18,6 @@ import EnterPrices from "./components/EnterPrices";
 import ComparePrices from "./components/ComparePrices";
 import Signup from "./pages/Signup";
 import Popup from "./components/Popup";
-
-const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
-});
 
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers }) => ({
