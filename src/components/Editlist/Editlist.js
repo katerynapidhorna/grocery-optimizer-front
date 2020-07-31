@@ -6,7 +6,6 @@ import "./Editlist.css";
 import { GET_SHOPPING_LIST } from "../../graphql/queries";
 import { UPDATE_SHOPPING_LIST } from "../../graphql/mutations";
 import { cloneObj } from "../../utils";
-import { NOT_AUTHORISED_STATUS_CODE } from "../../constants";
 import { handleNetworkError } from "../../utils";
 import { showPopup } from ".././Popup";
 
