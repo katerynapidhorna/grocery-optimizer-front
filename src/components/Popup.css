@@ -1,0 +1,57 @@
+.popup-red {
+  position: fixed;
+  width: 40%;
+  margin: auto;
+  padding: 1em;
+  top: 5px;
+  left: 20px;
+  right: 20px;
+  font-weight: bold;
+  border-radius: 7px;
+  background: red;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 100500;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+.popup-green {
+  position: fixed;
+  width: 40%;
+  margin: auto;
+  padding: 1em;
+  top: 5px;
+  left: 20px;
+  right: 20px;
+  font-weight: bold;
+  border-radius: 7px;
+  background-color: #7ee767e3;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 100500;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+@keyframes example {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
