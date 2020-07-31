@@ -35,7 +35,7 @@ export default function Homepage() {
               variables: { title: "My new List", userId: data.user.id },
             });
             refetch()
-            history.push(`/editPage/${res.data.addShoppinList.id}`);
+            history.push(`/edit/${res.data.addShoppinList.id}`);
           }}
         >
           Create new list

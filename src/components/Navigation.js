@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 export default function Navigation(props) {
   const { isLoggedIn, setLoginStatus } = props;
 
-  console.log("login", isLoggedIn);
-
   return (
     <div className="navigation">
       <span className="logo">Grocery Optimizer</span>

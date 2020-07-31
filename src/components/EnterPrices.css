@@ -4,16 +4,17 @@
   font-weight: bold;
 }
 
-.input-box {
-  width: fit-content;
-  margin: auto;
-} 
+.price-inputs-form {
+  text-align: left;
+}
 
 .input-box {
-  display: flex;  
-  margin-bottom: 10px;
-  width: 70%;
-  justify-content: space-between;
+  margin: auto auto 10px auto;
+  padding: 2px 0 2px 30%;
+}
+
+.input-box:hover {
+  background-color: #a0a0a059;
 }
 
 .product-container {
@@ -22,25 +23,37 @@
 
 .product {
   font-weight: bold;
-  padding-bottom: 10px;
-  margin-right: 10px;
+  padding-bottom: 5px;
+  margin-left: 20px;
+  padding-top: 5px;
 }
 
-  
-  .input-price {
-    font-weight: bold;
-    padding: 0.4em;
-    width: 10%;
-  }
+.input-price {
+  font-weight: bold;
+  padding: 0.4em;
+  width: 10%;
+}
 
-  .complete-button {
-    font-size: 15px;
-    padding: 0.5em;
-    background-color: #4caf50b8;
-    border: none;
-    border-radius: 3px;
-  }
+.complete-button {
+  font-size: 15px;
+  padding: 0.5em;
+  background-color: #4caf50b8;
+  border: none;
+  border-radius: 3px;
+}
+
+.complete-button-wrp {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.complete-button:hover {
+  box-shadow: 0 0 6px gray;
+}
+
+.complete-button:active {
+  box-shadow: inset 0 0 6px gray;
+}
 
 @media only screen and (max-width: 611px) {
-
 }

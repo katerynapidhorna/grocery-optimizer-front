@@ -28,8 +28,6 @@ export default function Editlist() {
   if (loading) return "Loading...";
   if (error) return error.message;
 
-  console.log(data)
-
   function removeOne(index) {
     return productsList.products.filter((p, i) => {
       if (i !== index) {
@@ -38,10 +36,9 @@ export default function Editlist() {
     });
   }
 
-
   return (
     <div className="list-container">
-      <form>
+      <form className="edit-list-form">
         {productsList && (
           <input
             className="title-input"
@@ -96,8 +93,7 @@ export default function Editlist() {
                       products: removeOne(i),
                     });
                   }}
-                >
-                </span>
+                ></span>
               </div>
             );
           })}
@@ -115,51 +111,56 @@ export default function Editlist() {
                   ],
                 });
               }}
-            >
-            </span>
+            ></span>
           )}
         </div>
       </form>
-      <div className='buttons-conteiner'>
-        <div className='controls'>
-          <Link className="basic-button list-button" title='to current shopping list' to={`/shoppingList/${listId}`} />
+      <div className="buttons-conteiner">
+        <div className="controls">
+          <Link
+            className="basic-button list-button"
+            title="to current shopping list"
+            to={`/shoppingList/${listId}`}
+          />
           <span>Back to list</span>
         </div>
-        <div className='controls'>
-        <p
-        title='update list'
-        className='basic-button update-button'
-        onClick={async (e) => {
-          e.preventDefault();
-          await updateShoppingList({
-            variables: {
-              title: productsList.title,
-              id: listId,
-              products: productsList.products.map((p) => {
-                return {
-                  name: p.name,
-                  amount: p.amount,
-                  id: p.id || null,
-                };
-              }),
-            },
-          });
-          refetch();
-        }}
-      >
-      </p>
-      <span>Update list</span>
+        <div className="controls">
+          <p
+            title="update list"
+            className="basic-button update-button"
+            onClick={async (e) => {
+              e.preventDefault();
+              await updateShoppingList({
+                variables: {
+                  title: productsList.title,
+                  id: listId,
+                  products: productsList.products.map((p) => {
+                    return {
+                      name: p.name,
+                      amount: p.amount,
+                      id: p.id || null,
+                    };
+                  }),
+                },
+              });
+              refetch();
+            }}
+          ></p>
+          <span>Update list</span>
         </div>
-        <div className='controls'>
-          <Link className="basic-button compare-button" title='compare prices' to={`/comparePrices/${listId}`} />
+        <div className="controls">
+          <Link
+            className="basic-button compare-button"
+            title="compare prices"
+            to={`/comparePrices/${listId}`}
+          />
           <span>Compare prices</span>
         </div>
-        <div className='controls'>
-          <Link className="basic-button home-button" title='home' to={`/`} />
-        <span>Home</span>
+        <div className="controls">
+          <Link className="basic-button home-button" title="home" to={`/`} />
+          <span>Home</span>
         </div>
       </div>
-        
     </div>
   );
 }
