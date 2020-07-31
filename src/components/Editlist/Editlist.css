@@ -14,8 +14,11 @@
   margin-bottom: 25px;
 }
 
-form {
+.edit-list-form {
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .title-input {
@@ -26,6 +29,7 @@ form {
   width: 60%;
   font-weight: bold;
   text-transform: capitalize;
+  color: #545358;
   font-size: 1.5em;
   text-align: center;
   border: none;
@@ -71,20 +75,15 @@ input {
   background-image: url("../../img/add.png");
   background-size: 20px;
   top: 0;
-  right: -57px;
+  left: -120px;
   width: 30px;
   height: 30px;
 }
 
 @media only screen and (max-width: 698px) {
-
   .remove-item {
     margin-left: 6px;
     margin-right: 6px;
   }
 
-  .add-item {
-    top: -2px;
-    right: -12px;
-  }
 }

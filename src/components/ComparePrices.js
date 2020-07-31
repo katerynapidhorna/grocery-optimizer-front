@@ -17,7 +17,6 @@ export default function ComparePrices() {
   useEffect(() => {
     if (data) {
       const dataClone = cloneObj(data);
-      console.log(dataClone);
 
       let globalTotals = {};
 
@@ -77,7 +76,7 @@ export default function ComparePrices() {
 
   return (
     <div className="list-container">
-      <h2>Compare prices here</h2>
+      <h2  className='compare-prices-title'>Compare prices here</h2>
       <table cellSpacing="0">
         <thead>
           <tr>
@@ -119,7 +118,7 @@ export default function ComparePrices() {
           <Link
             className="basic-button edit-button"
             title="edit list"
-            to={`/editPage/${listId}`}
+            to={`/edit/${listId}`}
           ></Link>
           <span>Edit list</span>
         </div>

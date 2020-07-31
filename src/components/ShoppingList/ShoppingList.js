@@ -31,7 +31,7 @@ export default function ShoppingList() {
     if(error) {
       history.push('/login')
     }
-  },[error])
+  },[error,history])
 
 
 
@@ -59,7 +59,6 @@ export default function ShoppingList() {
                 <li key={i}>
                   {p.name}
                   <InputGroup.Checkbox checked={p.purchased} onChange={async (e)=>{
-                    
                     if(checkedId.indexOf(p.id) === -1 && e.target.checked) {
                       // if there is no such id => add id
                       set_checkedId([...checkedId,p.id])
@@ -81,7 +80,7 @@ export default function ShoppingList() {
       
       <div className='buttons-conteiner'>
       <div className='controls'>
-        <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`}></Link> 
+        <Link className='basic-button edit-button' title='edit list' to={`/edit/${listId}`}></Link> 
         <span>Edit list</span>
       </div>
       <div className='controls'>
@@ -97,10 +96,6 @@ export default function ShoppingList() {
        <span>Home</span>
       </div>
       </div>
-    
-  
-      
-      
     </div>
   );
 }

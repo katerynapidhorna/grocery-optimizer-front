@@ -23,6 +23,7 @@ export default function Loginpage(props) {
     <div className="form-container">
       <h2>Login</h2>
       <form
+        className="login-form"
         action="/"
         onSubmit={(e) => {
           e.preventDefault();

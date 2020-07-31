@@ -57,12 +57,12 @@ function App() {
       <Switch>
         <Route exact path="/signup">
           <Signup isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
-          </Route>
+        </Route>
         <Route exact path="/login">
           <Loginpage isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
         </Route>
         <Route exact path="/" component={Homepage} />
-        <Route path="/editPage/:id" component={Editlist} />
+        <Route path="/edit/:id" component={Editlist} />
         <Route path="/shoppingList/:id" component={ShoppingList} />
         <Route path="/enterPrices/:id" component={EnterPrices} />
         <Route path="/comparePrices/:id" component={ComparePrices} />

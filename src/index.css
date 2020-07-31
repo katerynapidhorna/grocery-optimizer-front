@@ -25,6 +25,7 @@ h1 {
   text-shadow: 0 0 2px #fff;
   color: #545358;
   margin: 0;
+  margin-top: 5%;
   padding-bottom: 1em;
   padding-top: 2em;
 }
@@ -48,7 +49,7 @@ code {
 
 .navigation {
   display: flex;
-  position: sticky;
+  position: fixed;
   justify-content: space-between;
   box-shadow: 0 1px 6px black;
   background-color: #fff;
@@ -60,10 +61,11 @@ code {
 }
 
 .list-container {
-  min-width: 520px;
+  margin: 15% auto;
+  min-width: 320px;
+  max-width: 560px;
   position: relative;
   background-color: #e2f0f1;
-  margin-bottom: 10% !important;
 }
 
 .buttons-conteiner {
@@ -71,7 +73,6 @@ code {
   justify-content: space-evenly;
   margin-top: 30px;
 }
-
 
 .logo {
   font-size: 2em;
@@ -152,7 +153,6 @@ code {
   box-shadow: inset 0 0 3px black !important;
 }
 
-
 .edit-button {
   background-image: url("./img/edit.png");
   background-repeat: no-repeat;
@@ -205,7 +205,6 @@ code {
 .basic-button:active {
   box-shadow: inset 0 0 3px;
 }
-
 
 @media only screen and (max-width: 611px) {
   .controls span {

@@ -29,7 +29,6 @@ export default function EnterPrices() {
         });
         let knownStorePrice = "";
         if (storePrice) {
-          console.log("storePrice", storePrice);
           knownStorePrice = storePrice.price.toString();
         }
         return {
@@ -62,85 +61,97 @@ export default function EnterPrices() {
 
   return (
     <div className="list-container">
-      <h1>Enter    
-      <select
-      className='select-store'
-        name="store"
-        value={selectedStoreId}
-        onChange={(e) => {
-          set_selectedStoreId(e.target.value);
-        }}
-      >
-        {stores.map((s) => {
-          return (
-            <option value={s.id} key={s.id}>
-              {s.name}
-            </option>
-          );
-        })}
-      </select>
-        prices</h1>
+      <h1>
+        Enter
+        <select
+          className="select-store"
+          name="store"
+          value={selectedStoreId}
+          onChange={(e) => {
+            set_selectedStoreId(e.target.value);
+          }}
+        >
+          {stores.map((s) => {
+            return (
+              <option value={s.id} key={s.id}>
+                {s.name}
+              </option>
+            );
+          })}
+        </select>
+        prices
+      </h1>
 
-      <div>
-        <form>
+      <div className="price-inputs">
+        <form className="price-inputs-form">
           {productsForm.map((p, index) => {
             return (
-              <div className='input-box' key={p.id}>
-                  <input
-                    className='input-price'
-                    type="number"
-                    value={p.newPrice}
-                    onChange={(e) => {
-                      set_productsForm(
-                        productsForm.map((p, i) => {
-                          if (i === index) {
-                            return { ...p, newPrice: e.target.value };
-                          } else {
-                            return p;
-                          }
-                        })
-                      );
-                    }}
-                  />
-                  <span className='product'>{p.name}</span>
+              <div className="input-box" key={p.id}>
+                <input
+                  className="input-price"
+                  type="number"
+                  value={p.newPrice}
+                  onChange={(e) => {
+                    set_productsForm(
+                      productsForm.map((p, i) => {
+                        if (i === index) {
+                          return { ...p, newPrice: e.target.value };
+                        } else {
+                          return p;
+                        }
+                      })
+                    );
+                  }}
+                />
+                <span className="product">{p.name}</span>
               </div>
             );
           })}
+          <div class="complete-button-wrp">
+            <button
+              className="complete-button"
+              onClick={async (e) => {
+                e.preventDefault();
+                await updatePrices({
+                  variables: {
+                    prices: productsForm.map((p) => {
+                      return {
+                        productId: p.id,
+                        storeId: parseInt(selectedStoreId),
+                        productPrice: parseInt(p.newPrice),
+                      };
+                    }),
+                  },
+                });
+                refetchPricesInput();
+              }}
+            >
+              Complete
+            </button>
+          </div>
         </form>
       </div>
-      <button
-        className='complete-button'
-        onClick={async (e) => {
-          e.preventDefault();
-          await updatePrices({
-            variables: {
-              prices: productsForm.map((p) => {
-                return {
-                  productId: p.id,
-                  storeId: parseInt(selectedStoreId),
-                  productPrice: parseInt(p.newPrice),
-                };
-              }),
-            },
-          });
-          refetchPricesInput();
-        }}
-      >
-        Complete
-      </button>
       <div className="buttons-conteiner">
-        <div className='controls'>
-        <Link className='basic-button edit-button' title='edit list' to={`/editPage/${listId}`}></Link> 
-        <span>Edit list</span>
-      </div>
-        <div className='controls'>
-        <Link className="basic-button compare-button" title='compare prices' to={`/comparePrices/${listId}`} />
-        <span>Compare prices</span>
-      </div>
-        <div className='controls'>
-        <Link className="basic-button home-button" title='home' to={`/`} />
-        <span>Home</span>
-      </div>
+        <div className="controls">
+          <Link
+            className="basic-button edit-button"
+            title="edit list"
+            to={`/edit/${listId}`}
+          ></Link>
+          <span>Edit list</span>
+        </div>
+        <div className="controls">
+          <Link
+            className="basic-button compare-button"
+            title="compare prices"
+            to={`/comparePrices/${listId}`}
+          />
+          <span>Compare prices</span>
+        </div>
+        <div className="controls">
+          <Link className="basic-button home-button" title="home" to={`/`} />
+          <span>Home</span>
+        </div>
       </div>
     </div>
   );
