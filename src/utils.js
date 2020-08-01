@@ -1,4 +1,4 @@
-import { NOT_AUTHORISED_STATUS_CODE ,BAD_REQUEST} from "./constants";
+import { NOT_AUTHORISED_STATUS_CODE } from "./constants";
 import { showPopup } from "./components/Popup";
 
 // https://levelup.gitconnected.com/ways-to-clone-an-object-in-javascript-e1e5beaaf564
@@ -11,21 +11,27 @@ export function cloneObj(obj) {
   Relies on passed history object
 */
 export function handleNetworkError(error, history) {
+  function authError() {
+    setTimeout(() => {
+      showPopup("Error", "Unauthorised");
+      localStorage.removeItem("jwt");
+      history.push("/login");
+    }, 0);
+  }
+
   if (
     error.networkError &&
     error.networkError.statusCode === NOT_AUTHORISED_STATUS_CODE
   ) {
-    setTimeout(() => {
-      showPopup("Error", "Unauthorised");
-      history.push("/login");
-    }, 0);
+    authError();
   } else if (
     error.networkError &&
-    error.networkError.statusCode === BAD_REQUEST
+    error.networkError.result &&
+    error.networkError.result.error === "JsonWebTokenError"
   ) {
-    setTimeout(() => {
-      showPopup("Error", "Bad request");
-      history.push("/login");
-    }, 0);
+    authError();
+  } else {
+    showPopup("Error", error.message);
   }
+  console.dir(error);
 }

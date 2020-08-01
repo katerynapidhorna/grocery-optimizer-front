@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
-import {
-  InMemoryCache,
-  HttpLink,
-  ApolloClient,
-  from,
-} from "@apollo/client";
+import { InMemoryCache, HttpLink, ApolloClient, from } from "@apollo/client";
 import "./App.css";
 import Homepage from "./pages/Homepage/Homepage";
 import Loginpage from "./pages/Loginpage/Loginpage";
@@ -57,7 +52,9 @@ function App() {
         <Route exact path="/login">
           <Loginpage isLoggedIn={loggedIn} setLoginStatus={setLoginStatus} />
         </Route>
-        <Route exact path="/" component={Homepage} />
+        <Route exact path="/">
+          <Homepage isLoggedIn={loggedIn} />
+        </Route>
         <Route path="/edit/:id" component={Editlist} />
         <Route path="/shoppingList/:id" component={ShoppingList} />
         <Route path="/enterPrices/:id" component={EnterPrices} />

@@ -1,19 +1,29 @@
 import React from "react";
 import "./Homepage.css";
 import { Link, useHistory } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useLazyQuery, useMutation } from "@apollo/react-hooks";
 import { GET_USER } from "../../graphql/queries";
 import { ADD_SHOPPING_LIST } from "../../graphql/mutations";
 import { handleNetworkError } from "../../utils";
 
 export default function Homepage(props) {
   const [addShoppingList] = useMutation(ADD_SHOPPING_LIST);
-  const { loading, error, data, refetch } = useQuery(GET_USER);
+  const [getUser, { loading, error, data, refetch }] = useLazyQuery(GET_USER);
   const history = useHistory();
+
+  if (!props.isLoggedIn) {
+    history.replace("/login");
+    return "";
+  }
+
+  // Infinite loop without setTimeout
+  setTimeout(() => {
+    getUser({});
+  }, 16);
 
   if (loading) return "Loading...";
   if (error) {
-    handleNetworkError(error, props.history);
+    handleNetworkError(error, history);
     return error.message;
   }
 
