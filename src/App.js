@@ -13,6 +13,7 @@ import EnterPrices from "./components/EnterPrices";
 import ComparePrices from "./components/ComparePrices";
 import Signup from "./pages/Signup";
 import Popup from "./components/Popup";
+import { BACKEND_URL } from "./config";
 
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers }) => ({
@@ -24,13 +25,9 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const l = from([
-  authLink,
-  new HttpLink({ uri: "http://localhost:4000/graphql" }),
-]);
+const l = from([authLink, new HttpLink({ uri: `${BACKEND_URL}/graphql` })]);
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
   link: l,
   cache: new InMemoryCache(),
 });
