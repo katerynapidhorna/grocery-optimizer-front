@@ -13,10 +13,9 @@ export default function Loginpage(props) {
       email,
       password,
     });
-
     localStorage.setItem("jwt", response.data.token);
-    history.push("/");
     props.setLoginStatus(true);
+    history.push("/");
   }
 
   return (
