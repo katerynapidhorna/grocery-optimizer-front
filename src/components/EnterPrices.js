@@ -139,6 +139,14 @@ export default function EnterPrices() {
         </form>
       </div>
       <div className="buttons-conteiner">
+      <div className="controls">
+          <Link
+            className="basic-button list-button"
+            title="to current shopping list"
+            to={`/shoppingList/${listId}`}
+          />
+          <span>Back to list</span>
+        </div>
         <div className="controls">
           <Link
             className="basic-button edit-button"
