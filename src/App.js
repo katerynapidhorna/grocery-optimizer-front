@@ -57,7 +57,7 @@ function App() {
         </Route>
         <Route path="/edit/:id" component={Editlist} />
         <Route path="/shoppingList/:id" component={ShoppingList} />
-        <Route path="/enterPrices/:id" component={EnterPrices} />
+        <Route path="/enter-prices/:id" component={EnterPrices} />
         <Route path="/comparePrices/:id" component={ComparePrices} />
       </Switch>
     </ApolloProvider>

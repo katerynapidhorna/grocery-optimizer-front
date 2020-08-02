@@ -104,7 +104,7 @@ export default function ShoppingList(props) {
           <Link
             className="basic-button prices-button"
             title="enter prices"
-            to={`/enterPrices/${listId}`}
+            to={`/enter-prices/${listId}`}
           ></Link>
           <span>Enter prices</span>
         </div>

@@ -132,7 +132,7 @@ export default function ComparePrices() {
           <Link
             className="basic-button prices-button"
             title="enter prices"
-            to={`/enterPrices/${listId}`}
+            to={`/enter-prices/${listId}`}
           ></Link>
           <span>Enter prices</span>
         </div>
