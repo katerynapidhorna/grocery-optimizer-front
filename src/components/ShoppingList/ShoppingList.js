@@ -30,7 +30,6 @@ export default function ShoppingList(props) {
     handleNetworkError(error, props.history);
     return error.message;
   }
-  console.log(data);
   return (
     <div className="list-container">
       <div className="list">
