@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { BACKEND_URL } from "../config";
 import axios from "axios";
 import "./Signup.css";
 
@@ -9,18 +10,18 @@ export default function Signup(props) {
   // const [createNewUser, { email,password }] = useMutation(CREATE_NEW_USER);
   const history = useHistory();
   async function createNewUser(email, password) {
-    const response = await axios.post("http://localhost:4000/signup", {
+    const response = await axios.post(`${BACKEND_URL}/signup`, {
       email,
       password,
     });
     localStorage.setItem("jwt", response.data.token);
-    history.replace("/");
+    history.push("/");
     props.setLoginStatus(true);
   }
 
   return (
     <div className="form-container">
-      <h2>Create new accaunt</h2>
+      <h2>Create new account</h2>
       <form
         className="signup-form"
         action="/"

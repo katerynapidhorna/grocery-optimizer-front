@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BACKEND_URL } from "../../config";
 import { Link, useHistory } from "react-router-dom";
 import "./Loginpage.css";
 
@@ -9,7 +10,7 @@ export default function Loginpage(props) {
   const history = useHistory();
 
   async function postUserData(email, password) {
-    const response = await axios.post("http://localhost:4000/login", {
+    const response = await axios.post(`${BACKEND_URL}/login`, {
       email,
       password,
     });
